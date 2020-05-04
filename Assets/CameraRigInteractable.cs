@@ -25,7 +25,7 @@ public class CameraRigInteractable : InteractableBase
 
         // Get the camera rig to move & the target location
         var cameraRig = GameObject.Find("Camera Rig");
-        var targetCamAnchor = transform.GetChild(0);
+        var targetCamAnchor = transform.Find("CameraAnchor");
 
         // Calculate and set new position
         cameraRig.transform.position = Vector3.MoveTowards(cameraRig.transform.position, targetCamAnchor.position, distance);
