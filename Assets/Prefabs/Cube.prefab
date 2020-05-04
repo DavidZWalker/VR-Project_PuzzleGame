@@ -43,8 +43,7 @@ GameObject:
   - component: {fileID: 6740317030555311375}
   - component: {fileID: 6740317030555311360}
   - component: {fileID: 6740317030555311372}
-  - component: {fileID: 6740317030555311371}
-  - component: {fileID: 5081950811809815498}
+  - component: {fileID: 7563422218035476835}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -89,6 +88,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -143,8 +143,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6740317030555311371}
-          m_MethodName: HighlightObject
+        - m_Target: {fileID: 7563422218035476835}
+          m_MethodName: OnPointerEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -154,14 +154,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, Unity.ugui,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 6740317030555311371}
-          m_MethodName: Reset
+        - m_Target: {fileID: 7563422218035476835}
+          m_MethodName: OnPointerExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -171,14 +169,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, Unity.ugui,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 4
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5081950811809815498}
-          m_MethodName: SwitchCamera
+        - m_Target: {fileID: 7563422218035476835}
+          m_MethodName: Interact
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -188,9 +184,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, Unity.ugui,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &6740317030555311371
+--- !u!114 &7563422218035476835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,19 +193,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6740317030555311361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8efa0f3565e194eb94acbc2c158cf2, type: 3}
+  m_Script: {fileID: 11500000, guid: f5907db5d6e01c14abb3dad7040411a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HighlightColor: {r: 0, g: 0, b: 1, a: 1}
---- !u!114 &5081950811809815498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6740317030555311361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb04acf979c2c6d4e834f95414cfb61c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  CameraMovementSpeed: 50
