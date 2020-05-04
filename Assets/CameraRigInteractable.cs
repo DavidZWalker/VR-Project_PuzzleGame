@@ -15,7 +15,6 @@ public class CameraRigInteractable : InteractableBase
 
     public void Update()
     {
-        Debug.Log("Test");
         if (_isSwitching) MoveCameraTowardsTarget();
     }
 
