@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraRigInteractable : InteractableBase
 {
     private bool _isSwitching;
+    private Vector3 _objectVector;
 
     public float CameraMovementSpeed = 10f;
 
@@ -38,10 +39,23 @@ public class CameraRigInteractable : InteractableBase
     private void StopMoving()
     {
         _isSwitching = false;
+        MakeBlockVisibleAgain();
     }
 
     private void SwitchCamera()
     {
         _isSwitching = true;
+        _objectVector = gameObject.transform.localScale;
+        MakeBlockInvisible();
+    }
+
+    private void MakeBlockVisibleAgain()
+    {
+        gameObject.transform.localScale = _objectVector;
+    }
+
+    private void MakeBlockInvisible()
+    {
+        gameObject.transform.localScale = new Vector3(0, 0, 0);
     }
 }
