@@ -14,11 +14,6 @@ public class CameraRigInteractable : InteractableBase
         SwitchCamera();
     }
 
-    public void Update()
-    {
-        if (_isSwitching) MoveCameraTowardsTarget();
-    }
-
     private void MoveCameraTowardsTarget()
     {
         // Calculate distance to move based on move-speed and time since last frame
@@ -57,5 +52,15 @@ public class CameraRigInteractable : InteractableBase
     private void MakeBlockInvisible()
     {
         gameObject.transform.localScale = new Vector3(0, 0, 0);
+    }
+
+    public override void InternalStart()
+    {
+        
+    }
+
+    public override void InternalUpdate()
+    {
+        if(_isSwitching) MoveCameraTowardsTarget();
     }
 }

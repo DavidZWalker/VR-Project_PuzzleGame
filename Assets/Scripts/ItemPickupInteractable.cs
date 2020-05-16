@@ -5,24 +5,22 @@ public class ItemPickupInteractable : InteractableBase
 {
     public string keyIdentifier;
 
+    private Inventory _inventory;
+
     public override void Interact()
     {
-        var inventory = Inventory.Instance;
         var item = new InventoryItem(keyIdentifier);
-        inventory.addItem(item, keyIdentifier);
+        _inventory.addItem(item, keyIdentifier);
         Destroy(gameObject);
-
     }
 
-    // Use this for initialization
-    void Start()
+    public override void InternalStart()
+    {
+        _inventory = Inventory.Instance;
+    }
+
+    public override void InternalUpdate()
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

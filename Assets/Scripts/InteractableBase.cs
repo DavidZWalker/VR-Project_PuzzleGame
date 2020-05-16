@@ -2,10 +2,20 @@
 using System.Collections;
 
 public abstract class InteractableBase : MonoBehaviour, IInteractable
-{
-    private Color originalColor;
+{ 
+    public void Start()
+    { 
+        InternalStart();
+    }
 
-    public Color HighlightColor = Color.blue;
+    public void Update()
+    {
+        InternalUpdate();
+    }
+
+    public abstract void InternalStart();
+
+    public abstract void InternalUpdate();
 
     public abstract void Interact();
 
@@ -16,14 +26,12 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     public void OnPointerExit()
     {
-        GetComponent<Renderer>().material.color = originalColor;
+        // TODO: remove outline logic
     }
 
     private void HighlightObject()
     {
-        var renderer = GetComponent<Renderer>();
-        originalColor = renderer.material.color;
-        renderer.material.color = HighlightColor;
+        // TODO: Changing color on material will not work for imported assets --> need outline logic here
     }
     
     

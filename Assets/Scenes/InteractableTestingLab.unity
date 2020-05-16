@@ -1070,6 +1070,7 @@ GameObject:
   - component: {fileID: 1803073344}
   - component: {fileID: 1803073343}
   - component: {fileID: 1803073342}
+  - component: {fileID: 1803073348}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1089,7 +1090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4140100c5fc64282971785c7ed7d752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HighlightColor: {r: 0.88292867, g: 0.9150943, b: 0.10791205, a: 1}
   keyIdentifier: testItem
 --- !u!114 &1803073343
 MonoBehaviour:
@@ -1224,6 +1224,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1803073348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803073341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &2125254309
 PrefabInstance:
   m_ObjectHideFlags: 0
