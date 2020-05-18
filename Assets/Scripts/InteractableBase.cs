@@ -2,9 +2,13 @@
 using System.Collections;
 
 public abstract class InteractableBase : MonoBehaviour, IInteractable
-{ 
+{
+    private Outline _outline;
+
     public void Start()
-    { 
+    {
+        _outline = GetComponent<Outline>();
+        _outline.enabled = false;
         InternalStart();
     }
 
@@ -26,12 +30,12 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     public void OnPointerExit()
     {
-        // TODO: remove outline logic
+        _outline.enabled = false;
     }
 
     private void HighlightObject()
     {
-        // TODO: Changing color on material will not work for imported assets --> need outline logic here
+        _outline.enabled = true;
     }
     
     
