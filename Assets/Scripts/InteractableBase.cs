@@ -4,8 +4,6 @@ using System;
 
 public abstract class InteractableBase : MonoBehaviour, IInteractable
 {
-    private Outline _outline;
-
     private Renderer renderer;
     private int anzahl = 0;
     Color[] colors;
@@ -14,8 +12,6 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     public void Start()
     {
-        //_outline = GetComponent<Outline>();
-        //_outline.enabled = false;
         InternalStart();
     }
 
@@ -56,7 +52,6 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     public void OnPointerExit()
     {
-        //_outline.enabled = false;
         renderer = GetComponent<Renderer>();
         int index = 0;
         foreach (var mat in renderer.materials)
@@ -68,7 +63,6 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     private void HighlightObject()
     {
-        //_outline.enabled = true;
         renderer = GetComponent<Renderer>();
         foreach (var mat in renderer.materials)
         {
