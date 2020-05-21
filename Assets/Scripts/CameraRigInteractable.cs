@@ -22,12 +22,13 @@ public class CameraRigInteractable : InteractableBase
         // Get the camera rig to move & the target location
         var cameraRig = GameObject.Find("Camera Rig");
         var targetCamAnchor = transform.Find("CameraAnchor");
+        var targetPosition = targetCamAnchor.position + targetCamAnchor.localPosition;
 
         // Calculate and set new position
-        cameraRig.transform.position = Vector3.MoveTowards(cameraRig.transform.position, targetCamAnchor.position, distance);
+        cameraRig.transform.position = Vector3.MoveTowards(cameraRig.transform.position, targetPosition, distance);
 
         // Stop moving if the target position has been reached
-        if (Vector3.Distance(cameraRig.transform.position, targetCamAnchor.position) < 0.001f)
+        if (Vector3.Distance(cameraRig.transform.position, targetPosition) < 0.001f)
             StopMoving();
     }
 

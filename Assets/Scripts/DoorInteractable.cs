@@ -15,17 +15,20 @@ public class DoorInteractable : InteractableBase
 
     public override void Interact()
     {
+        // if the door is locked, try to unlock it first
         if (isLocked)
             TryUnlock();
         else
         {
+            // start the open/close animation and play the audio
             _isOpen = !_isOpen;
             _animator.SetBool("open", _isOpen);
-            if (_isOpen)
-                _audioSource.PlayOneShot(openDoorAudioClip);
-            else
-                _audioSource.PlayOneShot(closeDoorAudioClip);
 
+            // avoid using PlayOneShot() here because the current clip needs to be stopped if it is currently playing
+            // e.g. when opening and then immediately closing the door
+            _audioSource.Stop();
+            _audioSource.clip = _isOpen ? openDoorAudioClip : closeDoorAudioClip;
+            _audioSource.Play();
         }
     }
 
@@ -42,14 +45,16 @@ public class DoorInteractable : InteractableBase
 
     private void TryUnlock()
     {
+        // check whether the corresponding key is currently in the player's inventory
         var key = Inventory.Instance.GetItem(keyName);
         if (key != null)
         {
+            // if player has the key, use it and unlock the door
             Inventory.Instance.UseItem(key);
             Unlock();
         }
         else
-            _audioSource.PlayOneShot(doorLockedAudioClip);
+            _audioSource.PlayOneShot(doorLockedAudioClip); // if player does not have key, play special audio clip
     }
 
     private void Unlock()
