@@ -81,6 +81,10 @@ public class Inventory
         return HasItem(identifier) ? _items[identifier] : null;
     }
 
+    /// <summary>
+    /// Removes the item from the inventory if it is not a persistent item
+    /// </summary>
+    /// <param name="item">the item to use</param>
     public void UseItem(InventoryItem item)
     {
         if (!item.IsPersistent)

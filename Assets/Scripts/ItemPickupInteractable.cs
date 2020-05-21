@@ -5,6 +5,7 @@ public class ItemPickupInteractable : InteractableBase
 {
     public string keyIdentifier;
     public bool isPersistent;
+    public AudioClip pickUpAudioClip;
 
     private Inventory _inventory;
 
@@ -12,6 +13,7 @@ public class ItemPickupInteractable : InteractableBase
     {
         var item = new InventoryItem(keyIdentifier, isPersistent);
         _inventory.AddItem(item);
+        AudioSource.PlayClipAtPoint(pickUpAudioClip, transform.position);
         Destroy(gameObject);
     }
 
