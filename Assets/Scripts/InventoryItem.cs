@@ -1,10 +1,20 @@
 ﻿public class InventoryItem
 {
-    private string _keyIdentifier;
-
-    public InventoryItem(string keyIdentifier)
+    public string ID
     {
-        _keyIdentifier = keyIdentifier;
-        var door = new DoorInteractable();
+        get;
+        private set;
+    }
+
+    public bool IsPersistent
+    {
+        get;
+        private set;
+    }
+
+    public InventoryItem(string keyIdentifier, bool isPersistent)
+    {
+        ID = keyIdentifier;
+        IsPersistent = isPersistent;
     }
 }
