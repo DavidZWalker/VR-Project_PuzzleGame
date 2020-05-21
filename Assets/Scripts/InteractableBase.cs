@@ -4,9 +4,8 @@ using System;
 
 public abstract class InteractableBase : MonoBehaviour, IInteractable
 {
-    private Renderer renderer;
-    private int anzahl = 0;
-    Color[] colors;
+    private int _anzahlColorsInKindObjekt = 10;
+    Color[,] colors;
 
     public Color HighlightColor = Color.blue;
 
@@ -34,41 +33,50 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     private void SaveOriginalColors()
     {
-        renderer = GetComponent<Renderer>();
-        foreach (var m in renderer.materials)
-        {
-            anzahl++;
-        }
+        MeshRenderer[] kindObjekte = GetComponentsInChildren<MeshRenderer>();
 
-        colors = new Color[anzahl];
-        int index = 0;
+        //zweidimensionales Array wird angelegt: [ Anzahl Kindobjekte , festgelegte Anzahl der Materials/Kind ]
+        colors = new Color[kindObjekte.Length, _anzahlColorsInKindObjekt];
 
-        foreach (var mat in renderer.materials)
+        //Schleife geht durch alle KindObjekte des Elternobjekts durch
+        for (int i = 0; i < kindObjekte.Length; i++)
         {
-            colors[index] = mat.color;
-            index++;
-        }
-    }
-
-    public void OnPointerExit()
-    {
-        renderer = GetComponent<Renderer>();
-        int index = 0;
-        foreach (var mat in renderer.materials)
-        {
-            mat.color = colors[index];
-            index++;
+            //Schleife geht durch alle Materials des KindObjekts durch und speichert diese im Array "colors"
+            int index = 0;
+            foreach (var mat in kindObjekte[i].materials)
+            {
+                colors[i, index] = mat.color;
+                index++;
+            }
         }
     }
 
     private void HighlightObject()
     {
-        renderer = GetComponent<Renderer>();
-        foreach (var mat in renderer.materials)
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        for (int i = 0; i < renderers.Length; i++)
         {
-            mat.color = HighlightColor;
+            foreach (var mat in renderers[i].materials)
+            {
+                mat.color = HighlightColor;
+            }            
         }
     }
-    
-    
+
+    public void OnPointerExit()
+    {
+        MeshRenderer[] kindObjekte = GetComponentsInChildren<MeshRenderer>();
+        //Schleife geht durch alle KindObjekte des Elternobjekts durch
+        for (int i = 0; i < kindObjekte.Length; i++)
+        {
+            //Schleife geht durch alle Materials des KindObjekts durch und setzt sie auf die Originalfarbe zurück
+            int index = 0;
+            foreach (var mat in kindObjekte[i].materials)
+            {
+                mat.color = colors[i, index];
+                index++;
+            }
+        }
+
+    }
 }
