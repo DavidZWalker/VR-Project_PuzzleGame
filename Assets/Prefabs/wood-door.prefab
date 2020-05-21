@@ -167,8 +167,10 @@ MonoBehaviour:
   HighlightColor: {r: 0, g: 0, b: 1, a: 1}
   isLocked: 0
   keyName: bedroomKey
-  unlockDoorAudioClip: {fileID: 0}
+  unlockDoorAudioClip: {fileID: 8300000, guid: 3388f1e01cc524af6ac1133e1b3dde00, type: 3}
   openDoorAudioClip: {fileID: 8300000, guid: ca4f191815bdc479aa159d59cb90f0c5, type: 3}
+  closeDoorAudioClip: {fileID: 8300000, guid: b78bfd549574149d6b456521038e51e2, type: 3}
+  doorLockedAudioClip: {fileID: 8300000, guid: 491de21ea1aa641bfa209336a36e3acf, type: 3}
 --- !u!82 &1875924939
 AudioSource:
   m_ObjectHideFlags: 0

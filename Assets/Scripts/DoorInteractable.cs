@@ -10,6 +10,8 @@ public class DoorInteractable : InteractableBase
     public string keyName;
     public AudioClip unlockDoorAudioClip;
     public AudioClip openDoorAudioClip;
+    public AudioClip closeDoorAudioClip;
+    public AudioClip doorLockedAudioClip;
 
     public override void Interact()
     {
@@ -20,9 +22,10 @@ public class DoorInteractable : InteractableBase
             _isOpen = !_isOpen;
             _animator.SetBool("open", _isOpen);
             if (_isOpen)
-            {
                 _audioSource.PlayOneShot(openDoorAudioClip);
-            }
+            else
+                _audioSource.PlayOneShot(closeDoorAudioClip);
+
         }
     }
 
@@ -45,6 +48,8 @@ public class DoorInteractable : InteractableBase
             Inventory.Instance.UseItem(key);
             Unlock();
         }
+        else
+            _audioSource.PlayOneShot(doorLockedAudioClip);
     }
 
     private void Unlock()
